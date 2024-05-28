@@ -1,209 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Event Countdown</title>
-<style>
-  body, html {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-   /* background: linear-gradient(0deg, #85B6FF, #123456);*/ /* Adjust these colors */	
-    overflow: hidden; /* Ensure snowflakes don't cause scroll bars */
-  }
-  
-  .spotlight {
-    position: absolute;
-	pointer-events: none;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0));
-  }
-  
-  
-  .countdown-container {
-    padding: 20px;
-    background-color: rgba(0,0,0,0); /* Semi-transparent background */
-    border-radius: 10px;
-  }
-  .countdown-item {
-    font-size: 30px;
-    margin: 20px;
-  }
-  
-  #eventIcon {
-	  font-size:60px;
-	  margin:5px;
-		 text-shadow: 0px 1px 1px black;
-  }
-  
-  #eventDays {
-	  font-size:40px;
-	  margin:5px;
-	 text-shadow: 0px 1px 1px black;
-	  
-  }
-  #eventFormat {
-	  font-size:40px;
-	  margin:5px;
-	 text-shadow: 0px 1px 1px black;
-	  
-  }
-  #eventName {
-	  font-size:40px;
-	  margin:5px;
-	 text-shadow: 0px 1px 1px black;
-	  
-  }
-  
-  .snowflake {
-    color: #FFFFFF;
-    font-size: 1em;
-    position: fixed;
-    top: -10px;
-    z-index: 9999;
-    user-select: none;
-    pointer-events: none;
-    animation: fall linear infinite;
-  }
-  
-  @keyframes fall {
-    to {
-      transform: translateY(100vh);
-    }
-  }
-  
-</style>
-</head>
-<body>
-<div class="spotlight"></div>
-<div>
-<div class="countdown-container">
-	
-   <p id="eventIcon">🎅</p>
-  <h1 id="eventDays">210</h1>
-  <p id="eventFormat">sleeps to</p>
-  <p id="eventName">Christmas</p>
-  
-  <div id="countdown">
-    <div class="countdown-item" id="days"></div>
-    <div class="countdown-item" id="hours"></div>
-    <div class="countdown-item" id="minutes"></div>
-    <div class="countdown-item" id="seconds"></div>
-  </div>
-  
-  
-</div>
-<div style="padding:10px">
-<div>
-<a href="https://apps.apple.com/us/app/a11y-audit-color-contrast/id1095478187?itsct=apps_box_badge&amp;itscg=30200" style="display: inline-block; overflow: hidden; border-radius: 13px; width: 150px; height: 60px;"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1459296000" alt="Download on the App Store" style="border-radius: 13px; width: 150px; height: 60px;"></a>
-</div>
+    <head>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Event Countdown</title>
+                <style>
+                    body, html {
+                        height: 100%;
+                        margin: 0;
+                        font-family: Arial, sans-serif;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        text-align: center;
+                        /* background: linear-gradient(0deg, #85B6FF, #123456);*/ /* Adjust these colors */
+                        overflow: hidden; /* Ensure snowflakes don't cause scroll bars */
+                    }
+                    
+                    .spotlight {
+                        position: absolute;
+                        pointer-events: none;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0));
+                    }
+                    
+                    
+                    .countdown-container {
+                        padding: 20px;
+                        background-color: rgba(0,0,0,0); /* Semi-transparent background */
+                        border-radius: 10px;
+                    }
+                    .countdown-item {
+                        font-size: 30px;
+                        margin: 20px;
+                    }
+                    
+                    #eventIcon {
+                        font-size:60px;
+                        margin:5px;
+                        text-shadow: 0px 1px 1px black;
+                    }
+                    
+                    #eventDays {
+                        font-size:40px;
+                        margin:5px;
+                        text-shadow: 0px 1px 1px black;
+                        
+                    }
+                    #eventFormat {
+                        font-size:40px;
+                        margin:5px;
+                        text-shadow: 0px 1px 1px black;
+                        
+                    }
+                    #eventName {
+                        font-size:40px;
+                        margin:5px;
+                        text-shadow: 0px 1px 1px black;
+                        
+                    }
+                    
+                    .snowflake {
+                        color: #FFFFFF;
+                        font-size: 1em;
+                        position: fixed;
+                        top: -10px;
+                        z-index: 9999;
+                        user-select: none;
+                        pointer-events: none;
+                        animation: fall linear infinite;
+                    }
+                    
+                    @keyframes fall {
+                        to {
+                            transform: translateY(100vh);
+                        }
+                    }
+                    
+                </style>
+    </head>
+    <body>
+        <div class="spotlight"></div>
+        <div>
+            <div class="countdown-container">
+                
+                <p id="eventIcon">🎅</p>
+                <h1 id="eventDays">210</h1>
+                <p id="eventFormat">sleeps to</p>
+                <p id="eventName">Christmas</p>
+                
+                <div id="countdown">
+                    <div class="countdown-item" id="days"></div>
+                    <div class="countdown-item" id="hours"></div>
+                    <div class="countdown-item" id="minutes"></div>
+                    <div class="countdown-item" id="seconds"></div>
+                </div>
+                
+            </div>
+            <div style="padding:10px">
+                <div>
+                    <a href="https://apps.apple.com/us/app/a11y-audit-color-contrast/id1095478187?itsct=apps_box_badge&amp;itscg=30200" style="display: inline-block; overflow: hidden; border-radius: 13px; width: 150px; height: 60px;"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1459296000" alt="Download on the App Store" style="border-radius: 13px; width: 150px; height: 60px;"></a>
+                </div>
+                
+            </div>
+            
+            <script>
+                function parseEventURL(urlString) {
+                    
+                    const url = new URL(urlString);
+                    const params = new URLSearchParams(url.search);
+                    
+                    return {
+                        date: params.get('date'),
+                        color: params.get('color'),
+                        title: params.get('title'),
+                        icon: params.get('icon'),
+                        effectName: params.get('effectName'),
+                        effectColor: params.get('effectColor'),
+                        format: params.get('format')
+                    };
+                }
+                
+                
+                /*
+                 
+                 const currentUrl = 'https://example.com/?title=Christmas&subtitle=&icon=%F0%9F%8E%85&color=%23FF0000&date=2024-12-25T00:00:00Z&alertName=None&alertValue=0&repeatName=Every%20year&repeatValue=365&effectName=Snow&effectColor=%23FFFFFF&effectName=snow&format=sleeps';
+                 
+                 
+                 
+                 const currentUrl = "https://whimsical-salamander-7bc11c.netlify.app/?title=Halloween&subtitle=&icon=🎃&format=nightmares&color=%23FF8000&date=2024-10-31T00:00:00Z&alertName=None&alertValue=0&repeatName=Every%20year&repeatValue=365&effectName=Stars&effectColor=#FFFF00&effectName=stars"
+                 
+                 */
+                
+                const currentUrl = window.location.href
+                const event = parseEventURL(currentUrl);
+                
+                // Set the background color and possibly other effects based on the event
+                document.body.style.backgroundColor = event.color;
+                
+                
+                // Example usage:
+                //const lighterColor = '#85B6FF';
+                //const darkerColor = '#123456';
+                adjustBackgroundGradient(lightenDarkenColor(event.color, -20), lightenDarkenColor(event.color, 20));
+                
+                
+                if (event.effectName.toLowerCase() === 'snow') {
+                    startSnowEffect();
+                }
+                
+                function updateCountdown() {
+                    const now = new Date().getTime();
+                    const eventDate = new Date(event.date).getTime();
+                    
+                    const distance = eventDate - now;
+                    
+                    // Time calculations
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    
+                    document.getElementById('eventIcon').innerHTML = event.icon;
+                    document.getElementById('eventDays').innerHTML = days;
+                    document.getElementById('eventFormat').innerHTML = event.format + " to";
+                    document.getElementById('eventName').innerHTML = event.title;
+                    
+                    // Display the result
+                    // document.getElementById('days').innerText = days + 'd ';
+                    // document.getElementById('hours').innerText = hours + 'h ';
+                    // document.getElementById('minutes').innerText = minutes + 'm ';
+                    // document.getElementById('seconds').innerText = seconds + 's ';
+                    
+                    // If the countdown is over, display some text
+                    if (distance < 0) {
+                        clearInterval(updateInterval);
+                        document.getElementById('countdown').innerHTML = "The event has started!";
+                    }
+                }
+                
+                function startSnowEffect() {
+                    let snowflakeChar = '❄';
+                    let snowflakeCount = 50; // Adjust number of snowflakes
+                    let body = document.body;
+                    
+                    for (let i = 0; i < snowflakeCount; i++) {
+                        let snowflake = document.createElement('div');
+                        snowflake.className = 'snowflake';
+                        snowflake.style.left = Math.random() * window.innerWidth + 'px';
+                        snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; // Duration between 2 and 5 seconds
+                        snowflake.style.opacity = Math.random();
+                        snowflake.style.fontSize = Math.random() * 10 + 10 + 'px'; // Size between 10 and 20px
+                        snowflake.innerHTML = snowflakeChar;
+                        body.appendChild(snowflake);
+                    }
+                }
+                
+                function adjustBackgroundGradient(lighterColor, darkerColor) {
+                    const background = document.body
+                    background.style.background = `linear-gradient(0deg, ${lighterColor}, ${darkerColor})`;
+                }
+                
+                function adjustSpotlightGradient(centerColor, edgeColor) {
+                    const spotlight = document.body
+                    spotlight.style.background = `radial-gradient(circle at center, ${centerColor}, ${edgeColor})`;
+                }
+                
+                updateCountdown();
+                let updateInterval = setInterval(updateCountdown, 1000);
+                
+                
+                function lightenDarkenColor(col, amt) {
+                  
+                    var usePound = false;
+                  
+                    if (col[0] == "#") {
+                        col = col.slice(1);
+                        usePound = true;
+                    }
+                 
+                    var num = parseInt(col,16);
+                 
+                    var r = (num >> 16) + amt;
+                 
+                    if (r > 255) r = 255;
+                    else if  (r < 0) r = 0;
+                 
+                    var b = ((num >> 8) & 0x00FF) + amt;
+                 
+                    if (b > 255) b = 255;
+                    else if  (b < 0) b = 0;
+                 
+                    var g = (num & 0x0000FF) + amt;
+                 
+                    if (g > 255) g = 255;
+                    else if (g < 0) g = 0;
+                 
+                    return (usePound?"#":"") + (g | (b << 8) | (r << 16)).toString(16);
+                  
+                }
 
-</div>
-
-<script>
-function parseEventURL(urlString) {
-    const url = new URL(urlString);
-    const params = new URLSearchParams(url.search);
-
-    return {
-        date: params.get('date'),
-        color: params.get('color'), 
-        title: params.get('title'),
-        icon: params.get('icon'),
-        effectName: params.get('effectName'),
-        effectColor: params.get('effectColor'),
-		format: params.get('format')
-    };
-}
-
-//const currentUrl = 'https://example.com/?title=Christmas&subtitle=&icon=%F0%9F%8E%85&color=%23FF0000&date=2024-12-25T00:00:00Z&alertName=None&alertValue=0&repeatName=Every%20year&repeatValue=365&effectName=Snow&effectColor=%23FFFFFF&effectName=snow&format=sleeps';
-
-//const currentUrl = "https://whimsical-salamander-7bc11c.netlify.app/?title=Halloween&subtitle=&icon=🎃&format=nightmares&color=%23FF8000&date=2024-10-31T00:00:00Z&alertName=None&alertValue=0&repeatName=Every%20year&repeatValue=365&effectName=Stars&effectColor=#FFFF00&effectName=stars"
-
-const event = parseEventURL(currentUrl);
-
-// Set the background color and possibly other effects based on the event
-document.body.style.backgroundColor = event.color;
-
-
-// Example usage:
-//const lighterColor = '#85B6FF';
-//const darkerColor = '#123456';
-adjustBackgroundGradient(event.color, event.color);
-
-
-if (event.effectName.toLowerCase() === 'snow') {
-    startSnowEffect();
-}
-
-function updateCountdown() {
-  const now = new Date().getTime();
-  const eventDate = new Date(event.date).getTime();
-
-  const distance = eventDate - now;
-
-  // Time calculations
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-   document.getElementById('eventIcon').innerHTML = event.icon;
-   document.getElementById('eventDays').innerHTML = days;
-   document.getElementById('eventFormat').innerHTML = event.format + " to";
-   document.getElementById('eventName').innerHTML = event.title;
-  
-  // Display the result
- // document.getElementById('days').innerText = days + 'd ';
- // document.getElementById('hours').innerText = hours + 'h ';
- // document.getElementById('minutes').innerText = minutes + 'm ';
- // document.getElementById('seconds').innerText = seconds + 's ';
-
-  // If the countdown is over, display some text
-  if (distance < 0) {
-    clearInterval(updateInterval);
-    document.getElementById('countdown').innerHTML = "The event has started!";
-  }
-}
-
-function startSnowEffect() {
-    let snowflakeChar = '❄';
-    let snowflakeCount = 50; // Adjust number of snowflakes
-    let body = document.body;
-
-    for (let i = 0; i < snowflakeCount; i++) {
-        let snowflake = document.createElement('div');
-        snowflake.className = 'snowflake';
-        snowflake.style.left = Math.random() * window.innerWidth + 'px';
-        snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; // Duration between 2 and 5 seconds
-        snowflake.style.opacity = Math.random();
-        snowflake.style.fontSize = Math.random() * 10 + 10 + 'px'; // Size between 10 and 20px
-        snowflake.innerHTML = snowflakeChar;
-        body.appendChild(snowflake);
-    }
-}
-
-function adjustBackgroundGradient(lighterColor, darkerColor) {
-  const background = document.body
-  background.style.background = `linear-gradient(0deg, ${lighterColor}, ${darkerColor})`;
-}
-
-function adjustSpotlightGradient(centerColor, edgeColor) {
-  const spotlight = document.body
-  spotlight.style.background = `radial-gradient(circle at center, ${centerColor}, ${edgeColor})`;
-}
-
-updateCountdown();
-let updateInterval = setInterval(updateCountdown, 1000);
-</script>
-
-</body>
+            </script>
+            
+    </body>
 </html>
