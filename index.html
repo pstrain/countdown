@@ -17,6 +17,11 @@
                         overflow: hidden; /* Ensure snowflakes don't cause scroll bars */
                     }
                     
+                    .displayText {
+                        
+                        color: #FFFFFF;
+                    }
+                    
                     .spotlight {
                         position: absolute;
                         pointer-events: none;
@@ -87,10 +92,10 @@
         <div>
             <div class="countdown-container">
                 
-                <p id="eventIcon">🎅</p>
-                <h1 id="eventDays">210</h1>
-                <p id="eventFormat">sleeps to</p>
-                <p id="eventName">Christmas</p>
+                <p class="displayText" id="eventIcon">🎅</p>
+                <h1 class="displayText" id="eventDays">210</h1>
+                <p class="displayText" id="eventFormat">sleeps to</p>
+                <p class="displayText" id="eventName">Christmas</p>
                 
                 <div id="countdown">
                     <div class="countdown-item" id="days"></div>
@@ -120,7 +125,8 @@
                         icon: params.get('icon'),
                         effectName: params.get('effectName'),
                         effectColor: params.get('effectColor'),
-                        format: params.get('format')
+                        format: params.get('format'),
+                        textColor: parms.get('textColor')
                     };
                 }
                 
@@ -168,6 +174,9 @@
                     document.getElementById('eventDays').innerHTML = days;
                     document.getElementById('eventFormat').innerHTML = event.format + " to";
                     document.getElementById('eventName').innerHTML = event.title;
+                    
+                    document.querySelector('.displayText').style.color = event.textColor
+
                     
                     // Display the result
                     // document.getElementById('days').innerText = days + 'd ';
