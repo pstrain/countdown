@@ -3,79 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Countdown</title>
-    <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden; /* Ensure snowflakes don't cause scroll bars */
-        }
-
-        .displayText {
-            color: #FFFFFF;
-        }
-
-        .countdown-container {
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0); /* Semi-transparent background */
-            border-radius: 10px;
-        }
-
-        .countdown-item {
-            display: inline-block;
-            padding: 10px;
-            font-size: 20px;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 5px;
-            margin: 5px;
-        }
-
-        #eventIcon {
-            font-size: 60px;
-            margin: 5px;
-            text-shadow: 0px 0px 0px black;
-        }
-
-        #eventDays {
-            font-size: 40px;
-            margin: 5px;
-            text-shadow: 0px 0px 0px black;
-        }
-
-        #eventFormat {
-            font-size: 40px;
-            margin: 5px;
-            text-shadow: 0px 0px 0px black;
-        }
-
-        #eventName {
-            font-size: 40px;
-            margin: 5px;
-            text-shadow: 0px 0px 0px black;
-        }
-
-        .snowflake {
-            color: #FFFFFF;
-            font-size: 1em;
-            position: fixed;
-            top: -10px;
-            z-index: 9999;
-            user-select: none;
-            pointer-events: none;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh);
-            }
-        }
-    </style>
+    <title>Countdown App</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="countdown-container">
@@ -83,142 +12,24 @@
         <h1 class="displayText" id="eventDays">195</h1>
         <p class="displayText" id="eventFormat">sleeps to</p>
         <p class="displayText" id="eventName">Christmas</p>
-
+        <div class="spacer"></div>
         <div id="countdown">
             <div class="countdown-item" id="days">195 days</div>
             <div class="countdown-item" id="hours">23 hours</div>
             <div class="countdown-item" id="minutes">32 mins</div>
             <div class="countdown-item" id="seconds">31 secs</div>
         </div>
+        <div class="spacer"></div>
+        <div id="countdownTextPlaceholder">
+            <div id="countdownText"></div>
+        </div>
+        <div class="spacer"></div>
+        <div>
+            <a href="https://apps.apple.com/app/countdown-widget-holidays/id6504262113?itsct=apps_box_badge&amp;itscg=30200" style="display: inline-block; overflow: hidden; border-radius: 13px; width: 150px; height: 60px;">
+                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1459296000" alt="Download on the App Store" style="border-radius: 13px; width: 150px; height: 60px;">
+            </a>
+        </div>
     </div>
-
-    <script>
-        function parseEventURL(urlString) {
-            const url = new URL(urlString);
-            const params = new URLSearchParams(url.search);
-
-            return {
-                date: params.get('date'),
-                color: params.get('color'),
-                title: params.get('title'),
-                icon: params.get('icon'),
-                effectName: params.get('effectName'),
-                effectColor: params.get('effectColor'),
-                format: params.get('format'),
-                textColor: params.get('textColor')
-            };
-        }
-
-        const currentUrl = window.location.href;
-        const event = parseEventURL(currentUrl);
-
-        if (event.color) {
-            document.body.style.backgroundColor = event.color;
-            const lighterColor = lightenDarkenColor(event.color, 10);
-            const darkerColor = lightenDarkenColor(event.color, -20);
-            adjustBackgroundGradient(lighterColor, darkerColor);
-            adjustSpotlightGradient();
-        }
-
-        if (event.effectName && event.effectName.toLowerCase() === 'snow') {
-            startSnowEffect();
-        }
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const eventDate = new Date(event.date).getTime();
-
-            const distance = eventDate - now;
-
-            // Time calculations
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('eventIcon').innerHTML = event.icon;
-            document.getElementById('eventDays').innerHTML = days;
-            document.getElementById('eventFormat').innerHTML = event.format + " to";
-            document.getElementById('eventName').innerHTML = event.title;
-
-            document.querySelector('.displayText').style.color = event.textColor;
-
-            // Display the result
-            document.getElementById('days').innerText = days + ' days';
-            document.getElementById('hours').innerText = hours + ' hours';
-            document.getElementById('minutes').innerText = minutes + ' mins';
-            document.getElementById('seconds').innerText = seconds + ' secs';
-
-            // If the countdown is over, display some text
-            if (distance < 0) {
-                clearInterval(updateInterval);
-                document.getElementById('countdown').innerHTML = "The event has started!";
-            }
-        }
-
-        function startSnowEffect() {
-            let snowflakeChar = '*';
-            let snowflakeCount = 50; // Adjust number of snowflakes
-            let body = document.body;
-
-            for (let i = 0; i < snowflakeCount; i++) {
-                let snowflake = document.createElement('div');
-                snowflake.className = 'snowflake';
-                snowflake.style.left = Math.random() * window.innerWidth + 'px';
-                snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; // Duration between 2 and 5 seconds
-                snowflake.style.opacity = Math.random();
-                snowflake.style.fontSize = Math.random() * 10 + 10 + 'px'; // Size between 10 and 20px
-                snowflake.innerHTML = snowflakeChar;
-                body.appendChild(snowflake);
-            }
-        }
-
-        function adjustBackgroundGradient(lighterColor, darkerColor) {
-            const background = document.body;
-            background.style.background = `linear-gradient(0deg, ${lighterColor}, ${darkerColor})`;
-        }
-
-        function adjustSpotlightGradient() {
-            const spotlight = document.createElement('div');
-            spotlight.style.position = 'absolute';
-            spotlight.style.top = '0';
-            spotlight.style.left = '0';
-            spotlight.style.width = '100%';
-            spotlight.style.height = '100%';
-            spotlight.style.background = 'radial-gradient(circle at center, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0))';
-            spotlight.style.pointerEvents = 'none';
-            document.body.appendChild(spotlight);
-        }
-
-        function lightenDarkenColor(col, amt) {
-            if (!col) return col; // Return if col is null or undefined
-
-            var usePound = false;
-
-            if (col[0] == "#") {
-                col = col.slice(1);
-                usePound = true;
-            }
-
-            var num = parseInt(col, 16);
-
-            var r = (num >> 16) + amt;
-            if (r > 255) r = 255;
-            else if (r < 0) r = 0;
-
-            var b = ((num >> 8) & 0x00FF) + amt;
-            if (b > 255) b = 255;
-            else if (b < 0) b = 0;
-
-            var g = (num & 0x0000FF) + amt;
-            if (g > 255) g = 255;
-            else if (g < 0) g = 0;
-
-            return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16);
-        }
-
-        let updateInterval = setInterval(updateCountdown, 1000);
-        updateCountdown();
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>

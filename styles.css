@@ -1,0 +1,68 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.displayText {
+    color: #FFFFFF;
+}
+
+.countdown-container {
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 10px;
+}
+
+.countdown-item {
+    display: inline-block;
+    padding: 10px;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    margin: 5px;
+}
+
+#eventIcon, #eventDays, #eventFormat, #eventName {
+    margin: 5px;
+    text-shadow: 0px 0px 0px black;
+}
+
+#eventIcon {
+    font-size: 60px;
+}
+
+#eventDays, #eventFormat, #eventName {
+    font-size: 40px;
+}
+
+.snowflake {
+    color: #FFFFFF;
+    font-size: 1em;
+    position: fixed;
+    top: -10px;
+    z-index: 9999;
+    user-select: none;
+    pointer-events: none;
+    animation: fall linear infinite;
+}
+
+.spacer {
+    padding: 10px;
+}
+
+#countdownText {
+    margin: 0 auto;
+    width: 200px;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
