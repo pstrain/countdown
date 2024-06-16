@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.backgroundColor = event.color;
         const lighterColor = lightenDarkenColor(event.color, 30);
         const darkerColor = lightenDarkenColor(event.color, -60);
-        adjustBackgroundGradient(lighterColor, darkerColor);
+        adjustBackgroundGradient(darkerColor, lighterColor);
         adjustSpotlightGradient();
     }
 
