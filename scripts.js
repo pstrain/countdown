@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const url = new URL(urlString);
         let params = new URLSearchParams(url.search);
 
-        if (!params.has('count')) {
+		console.log(params);
+        if (params.size == 0) {
             const defaultUrl = new URL("https://countdwnapp.com/?title=Christmas&subtitle=&icon=%F0%9F%8E%85&color=%23C0392B&textColor=%23FFFFFF&format=sleeps&date=2024-12-25T00:00:00Z&alertName=None&alertValue=0&repeatName=Every%20year&repeatValue=3&effectName=Snow&effectColor=#FFFFFF&effect=*")
             params = new URLSearchParams(defaultUrl.search);
         }
